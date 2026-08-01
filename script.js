@@ -182,3 +182,83 @@ Written & Directed by
 `;
 
 }
+/* ===========================
+Photo Slideshow
+=========================== */
+
+const photos=[
+
+"images/photo1.jpg",
+
+"images/photo2.jpg",
+
+"images/photo3.jpg",
+
+"images/photo4.jpg",
+
+"images/photo5.jpg"
+
+];
+
+const chapters=[
+
+{
+title:"The Beginning",
+text:"Every journey starts with one hello. Little did we know that simple conversations would become unforgettable memories."
+},
+
+{
+title:"The Laughter",
+text:"Every smile you gave me made life brighter. Every laugh became music to my heart."
+},
+
+{
+title:"The Memories",
+text:"Time passed, but every moment with you became another page in our beautiful story."
+},
+
+{
+title:"The Promise",
+text:"No matter where life takes us, I promise to always choose you, support you, and treasure you."
+},
+
+{
+title:"Forever",
+text:"Happy Girlfriend's Day. Thank you for making my world brighter every single day. ❤️"
+}
+
+];
+
+let current=0;
+
+const img=document.getElementById("photo");
+const title=document.getElementById("chapter");
+const text=document.getElementById("paragraph");
+
+setInterval(()=>{
+
+current++;
+
+if(current>=photos.length){
+
+document.getElementById("credits").classList.add("creditScroll");
+
+return;
+
+}
+
+img.style.opacity=0;
+
+setTimeout(()=>{
+
+img.src=photos[current];
+
+title.innerHTML=chapters[current].title;
+
+text.innerHTML=chapters[current].text;
+
+img.style.opacity=1;
+
+},1000);
+
+},8000);

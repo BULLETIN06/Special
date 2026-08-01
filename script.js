@@ -3,11 +3,6 @@
    Written & Directed by Engineer Nerrick
 ========================================== */
 
-const music = document.getElementById("music");
-
-window.addEventListener("click", () => {
-    music.play().catch(error => console.log(error));
-}, { once: true });
 // Romantic background music
 const music = document.getElementById("music");
 

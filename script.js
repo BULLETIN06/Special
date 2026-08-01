@@ -262,3 +262,172 @@ img.style.opacity=1;
 },1000);
 
 },8000);
+/* ====================================
+FINAL MOVIE SCENE
+==================================== */
+
+const message = `
+
+My Dearest Love,
+
+Today is more than just Girlfriend's Day.
+
+It's a celebration of the incredible person who changed my life simply by being part of it.
+
+Every smile you give me becomes a memory.
+
+Every conversation becomes a treasure.
+
+Every moment with you becomes another reason to believe that love truly exists.
+
+Thank you for being my happiness.
+
+Thank you for being my peace.
+
+Thank you for being my favorite person.
+
+No matter where life takes us...
+
+No matter how many years pass...
+
+I'll always be grateful that our paths crossed.
+
+Happy Girlfriend's Day.
+
+Forever Yours,
+
+❤️ Engineer Nerrick ❤️
+
+`;
+
+function typeWriter(){
+
+const box=document.getElementById("typeWriter");
+
+let i=0;
+
+function write(){
+
+if(i<message.length){
+
+box.innerHTML+=message.charAt(i);
+
+i++;
+
+setTimeout(write,40);
+
+}
+
+}
+
+write();
+
+}
+
+/* Show ending after 60 seconds */
+
+setTimeout(()=>{
+
+document.getElementById("finalMessage").classList.add("show");
+
+typeWriter();
+
+},60000);
+
+/* Rose petals */
+
+setInterval(()=>{
+
+const rose=document.createElement("div");
+
+rose.className="rose";
+
+rose.innerHTML="🌹";
+
+rose.style.left=Math.random()*100+"vw";
+
+rose.style.animationDuration=(Math.random()*4+5)+"s";
+
+document.body.appendChild(rose);
+
+setTimeout(()=>{
+
+rose.remove();
+
+},9000);
+
+},300);
+
+/* Simple Fireworks */
+
+const canvas=document.getElementById("fireworks");
+
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+function burst(){
+
+const x=Math.random()*canvas.width;
+
+const y=Math.random()*canvas.height/2;
+
+for(let i=0;i<60;i++){
+
+particles.push({
+
+x,
+
+y,
+
+dx:(Math.random()-0.5)*8,
+
+dy:(Math.random()-0.5)*8,
+
+life:100
+
+});
+
+}
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach((p,index)=>{
+
+p.x+=p.dx;
+
+p.y+=p.dy;
+
+p.life--;
+
+ctx.beginPath();
+
+ctx.arc(p.x,p.y,2,0,Math.PI*2);
+
+ctx.fillStyle=`hsl(${Math.random()*360},100%,60%)`;
+
+ctx.fill();
+
+if(p.life<=0){
+
+particles.splice(index,1);
+
+}
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+setInterval(burst,2000);
